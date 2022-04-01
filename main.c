@@ -7,6 +7,9 @@ int main() {
 
     printf("i hate this shit");
 
+
+
+
     return 0;
 
 }
