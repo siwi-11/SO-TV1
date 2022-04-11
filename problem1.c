@@ -2,35 +2,35 @@
 #include <unistd.h>
 #include<sys/types.h>
 
-int processTree1(){
+int TreeProcess1(){
 
-    printf("\n\nPROCESS TREE 1:\n");
+    printf("\nTree Process 1:\n");
 
-    pid_t P1, P2, P3, P4;
+    pid_t process1, process2, process3, process4;
 
-    P1 = fork();
-    if(P1 == 0)
+    process1 = fork();
+    if(process1 == 0)
     {
-        printf("Child P1 with id: %d and its Parent id: %d \n", getpid(),getppid());
-        P2 = fork();
-        P3 = fork();
+        printf("Child process1 with id: %d and its Parent id: %d \n", getpid(),getppid());
+        process2 = fork();
+        process3 = fork();
 
-        if(P2 == 0 && P3 != 0) {
-            printf("Child P2 with id: %d and its Parent id: %d \n", getpid(), getppid());
+        if(process2 == 0 && process3 != 0) {
+            printf("Child process2 with id: %d and its Parent id: %d \n", getpid(), getppid());
         }
 
-        if(P3 == 0 && P2 != 0){
-            P4 = fork();
+        if(process3 == 0 && process2 != 0){
+            process4 = fork();
 
-            if(P4 == 0)
+            if(process4 == 0)
             {
-                printf("Child P4 with id: %d and its Parent id: %d \n", getpid(),getppid());
+                printf("Child process4 with id: %d and its Parent id: %d \n", getpid(),getppid());
             }else{
-                printf("Child P3 with id: %d and its Parent id: %d \n", getpid(),getppid());
+                printf("Child process3 with id: %d and its Parent id: %d \n", getpid(),getppid());
             }
         }
 
-        if(P2 != 0 && P3 != 0)
+        if(process2 != 0 && process3 != 0)
             while (wait(NULL) > 0) ;
 
     } else {
@@ -38,37 +38,37 @@ int processTree1(){
     }
 }
 
-int processTree2(){
-    printf("\n\nPROCESS TREE 2:\n");
+int TreeProcess2(){
+    printf("\n\Tree Process 2:\n");
 
-    pid_t P1, P2, P3, P4, P5;
+    pid_t process1, process2, process3, process4, process5;
 
-    P1 = fork();
+    process1 = fork();
 
-    if(P1 == 0){
+    if(process1 == 0){
 
-        printf("Child P1 with id: %d and its Parent id: %d \n", getpid(), getppid());
+        printf("Child process1 with id: %d and its Parent id: %d \n", getpid(), getppid());
 
-        P2 = fork();
-        P3 = fork();
-        P4 = fork();
+        process2 = fork();
+        process3 = fork();
+        process4 = fork();
 
-        if(P2 == 0 && P3 != 0 && P4 != 0)
-            printf("Child P2 with id: %d and its Parent id: %d \n", getpid(), getppid());
-        if(P2 != 0 && P3 == 0 && P4 != 0)
+        if(process2 == 0 && process3 != 0 && process4 != 0)
+            printf("Child process2 with id: %d and its Parent id: %d \n", getpid(), getppid());
+        if(process2 != 0 && process3 == 0 && process4 != 0)
         {
-            printf("Child P3 with id: %d and its Parent id: %d \n", getpid(), getppid());
-            P5 = fork();
-            if(P5 == 0)
-                printf("Child P5 with id: %d and its Parent id: %d \n", getpid(), getppid());
+            printf("Child process3 with id: %d and its Parent id: %d \n", getpid(), getppid());
+            process5 = fork();
+            if(process5 == 0)
+                printf("Child process5 with id: %d and its Parent id: %d \n", getpid(), getppid());
             else
                 while (wait(NULL) > 0) ;
 
         }
-        if(P2 != 0 && P3 != 0 && P4 == 0)
-            printf("Child P4 with id: %d and its Parent id: %d \n", getpid(), getppid());
+        if(process2 != 0 && process3 != 0 && process4 == 0)
+            printf("Child process4 with id: %d and its Parent id: %d \n", getpid(), getppid());
 
-        if(P2 != 0 && P3 != 0)
+        if(process2 != 0 && process3 != 0)
             while (wait(NULL) > 0) ;
 
     }else{
@@ -76,47 +76,47 @@ int processTree2(){
     }
 }
 
-int processTree3(){
-    printf("\n\nPROCESS TREE 3:\n");
+int TreeProcess3(){
+    printf("\nTree Process 3:\n");
 
-    pid_t P1, P2, P3, P4, P5, P6, P7;
+    pid_t process1, process2, process3, process4, process5, process6, process7;
 
-    P1 = fork();
+    process1 = fork();
 
-    if(P1 == 0){
+    if(process1 == 0){
 
-        printf("Child P1 with id: %d and its Parent id: %d \n", getpid(), getppid());
+        printf("Child process1 with id: %d and its Parent id: %d \n", getpid(), getppid());
 
-        P2 = fork();
-        P3 = fork();
-        P5 = fork();
+        process2 = fork();
+        process3 = fork();
+        process5 = fork();
 
-        if(P2 == 0 && P3 != 0 && P5 != 0)
-            printf("Child P2 with id: %d and its Parent id: %d \n", getpid(), getppid());
-        if(P2 != 0 && P3 == 0 && P5 != 0){
-            printf("Child P3 with id: %d and its Parent id: %d \n", getpid(), getppid());
-            P4 = fork();
-            if(P4 == 0)
-                printf("Child P4 with id: %d and its Parent id: %d \n", getpid(), getppid());
+        if(process2 == 0 && process3 != 0 && process5 != 0)
+            printf("Child process2 with id: %d and its Parent id: %d \n", getpid(), getppid());
+        if(process2 != 0 && process3 == 0 && process5 != 0){
+            printf("Child process3 with id: %d and its Parent id: %d \n", getpid(), getppid());
+            process4 = fork();
+            if(process4 == 0)
+                printf("Child process4 with id: %d and its Parent id: %d \n", getpid(), getppid());
             else
                 while (wait(NULL) > 0) ;
 
         }
-        if(P2 != 0 && P3 != 0 && P5 == 0) {
-            printf("Child P5 with id: %d and its Parent id: %d \n", getpid(), getppid());
-            P6 = fork();
-            if (P6 == 0){
-                printf("Child P6 with id: %d and its Parent id: %d \n", getpid(), getppid());
-                P7 = fork();
-                if(P7 == 0)
-                    printf("Child P7 with id: %d and its Parent id: %d \n", getpid(), getppid());
+        if(process2 != 0 && process3 != 0 && process5 == 0) {
+            printf("Child process5 with id: %d and its Parent id: %d \n", getpid(), getppid());
+            process6 = fork();
+            if (process6 == 0){
+                printf("Child process6 with id: %d and its Parent id: %d \n", getpid(), getppid());
+                process7 = fork();
+                if(process7 == 0)
+                    printf("Child process7 with id: %d and its Parent id: %d \n", getpid(), getppid());
                 else
                     while (wait(NULL) > 0) ;
 
             }else
                 while (wait(NULL) > 0) ;
         }
-        if(P2 != 0 && P3 != 0 && P5 != 0)
+        if(process2 != 0 && process3 != 0 && process5 != 0)
             while (wait(NULL) > 0) ;
 
     }else{
@@ -125,48 +125,48 @@ int processTree3(){
 
 }
 
-int processTree4(){
-    printf("\n\nPROCESS TREE 4:\n");
-    pid_t P1,P2, P3, P4, P5, P6, P7, P8;
+int TreeProcess4(){
+    printf("\nTree Process 4:\n");
+    pid_t process1, process2, process3, process4, process5, process6, process7, process8;
 
-    P1 = fork();
-    if(P1 == 0){
+    process1 = fork();
+    if(process1 == 0){
 
-        printf("Child P1 with id: %d and its Parent id: %d \n", getpid(), getppid());
+        printf("Child process1 with id: %d and its Parent id: %d \n", getpid(), getppid());
 
-        P2 = fork();
-        P3 = fork();
-        P4 = fork();
-        P5 = fork();
+        process2 = fork();
+        process3 = fork();
+        process4 = fork();
+        process5 = fork();
 
-        if(P2 == 0 && P3 != 0 && P4 != 0 && P5 != 0){
-            printf("Child P2 with id: %d and its Parent id: %d \n", getpid(), getppid());
-            P6 = fork();
-            if(P6 == 0)
-                printf("Child P6 with id: %d and its Parent id: %d \n", getpid(), getppid());
+        if(process2 == 0 && process3 != 0 && process4 != 0 && process5 != 0){
+            printf("Child process2 with id: %d and its Parent id: %d \n", getpid(), getppid());
+            process6 = fork();
+            if(process6 == 0)
+                printf("Child process6 with id: %d and its Parent id: %d \n", getpid(), getppid());
             else
                 while (wait(NULL) > 0) ;
         }
-        if(P2 != 0 && P3 == 0 && P4 != 0 && P5 != 0){
-            printf("Child P3 with id: %d and its Parent id: %d \n", getpid(), getppid());
-            P7 = fork();
-            if(P7 == 0)
-                printf("Child P7 with id: %d and its Parent id: %d \n", getpid(), getppid());
+        if(process2 != 0 && process3 == 0 && process4 != 0 && process5 != 0){
+            printf("Child process3 with id: %d and its Parent id: %d \n", getpid(), getppid());
+            process7 = fork();
+            if(process7 == 0)
+                printf("Child process7 with id: %d and its Parent id: %d \n", getpid(), getppid());
             else
                 while (wait(NULL) > 0) ;
         }
-        if(P2 != 0 && P3 != 0 && P4 == 0 && P5 != 0){
-            printf("Child P4 with id: %d and its Parent id: %d \n", getpid(), getppid());
-            P8 = fork();
-            if(P8 == 0)
-                printf("Child P8 with id: %d and its Parent id: %d \n", getpid(), getppid());
+        if(process2 != 0 && process3 != 0 && process4 == 0 && process5 != 0){
+            printf("Child process4 with id: %d and its Parent id: %d \n", getpid(), getppid());
+            process8 = fork();
+            if(process8 == 0)
+                printf("Child process8 with id: %d and its Parent id: %d \n", getpid(), getppid());
             else
                 while (wait(NULL) > 0) ;
         }
-        if(P2 != 0 && P3 != 0 && P4 != 0 && P5 == 0){
-            printf("Child P5 with id: %d and its Parent id: %d \n", getpid(), getppid());
+        if(process2 != 0 && process3 != 0 && process4 != 0 && process5 == 0){
+            printf("Child process5 with id: %d and its Parent id: %d \n", getpid(), getppid());
         }
-        if(P2 != 0 && P3 != 0 && P4 != 0 && P5 != 0){
+        if(process2 != 0 && process3 != 0 && process4 != 0 && process5 != 0){
             while (wait(NULL) > 0) ;
         }
 
