@@ -39,7 +39,7 @@ int TreeProcess1(){
 }
 
 int TreeProcess2(){
-    printf("\n\Tree Process 2:\n");
+    printf("\nTree Process 2:\n");
 
     pid_t process1, process2, process3, process4, process5;
 
