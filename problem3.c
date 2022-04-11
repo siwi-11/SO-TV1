@@ -4,7 +4,7 @@
 #include <stdlib.h>
 
 struct thread_data{
-    unsigned long long start_nr, end_nr;//ex start_nr = 1, end_nr = 20000
+    unsigned long long start_nr, end_nr;
 };
 
 struct shared_data{
@@ -25,7 +25,6 @@ int main(int argc, char  **argv) {
 
     unsigned long i, j, sum, prime;
 
-// now do it with four threads
 // setup a semaphore for synchronization of threads with an initial value of 0 (waits on 0)
     prime_count = 0;
     //time_count = GetTickCount();
@@ -73,7 +72,21 @@ int main(int argc, char  **argv) {
 
 int PerfectThread1 (void *Para1) {
   
-  /* aqui va el codi del link de la llista del readmi per a trobar els perfect numbers*/
+   int i, Number, Sum = 0 ;   
+
+     printf("\n Please Enter any number \n") ;   
+     scanf("%d", &Number) ;   
+
+     for(i = 1 ; i < Number ; i++)   
+      {   
+       if(Number % i == 0)   
+         Sum = Sum + i ;   
+      }    
+
+     if (Sum == Number)   
+        printf("\n %d is a Perfect Number", Number) ;   
+     else   
+        printf("\n%d is not the Perfect Number", Number) ;   
 
     pthread_mutex_unlock(Para1);
     return 0;
