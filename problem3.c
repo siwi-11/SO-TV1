@@ -81,7 +81,21 @@ int PerfectThread1 (void *Para1) {
 
 int PerfectThread2 (void *Para2) {
 
-  /* aqui va el codi del link de la llista del readmi per a trobar els perfect numbers*/
+     int i, Number, Sum = 0 ;   
+
+     printf("\n Please Enter any number \n") ;   
+     scanf("%d", &Number) ;   
+
+     for(i = 1 ; i < Number ; i++)   
+      {   
+       if(Number % i == 0)   
+         Sum = Sum + i ;   
+      }    
+
+     if (Sum == Number)   
+        printf("\n %d is a Perfect Number", Number) ;   
+     else   
+        printf("\n%d is not the Perfect Number", Number) ;    
 
     pthread_mutex_unlock (Para2);
     return 0;
@@ -89,7 +103,21 @@ int PerfectThread2 (void *Para2) {
 
 int PerfectThread3 (void *Para3) {
 
-  /* aqui va el codi del link de la llista del readmi per a trobar els perfect numbers*/
+  int i, Number, Sum = 0 ;   
+
+     printf("\n Please Enter any number \n") ;   
+     scanf("%d", &Number) ;   
+
+     for(i = 1 ; i < Number ; i++)   
+      {   
+       if(Number % i == 0)   
+         Sum = Sum + i ;   
+      }    
+
+     if (Sum == Number)   
+        printf("\n %d is a Perfect Number", Number) ;   
+     else   
+        printf("\n%d is not the Perfect Number", Number) ;  
 
     pthread_mutex_unlock (Para3);
     return 0;
@@ -97,7 +125,21 @@ int PerfectThread3 (void *Para3) {
 
 int PerfectThread4 (void *Para4) {
 
-  /* aqui va el codi del link de la llista del readmi per a trobar els perfect numbers*/
+  int i, Number, Sum = 0 ;   
+
+     printf("\n Please Enter any number \n") ;   
+     scanf("%d", &Number) ;   
+
+     for(i = 1 ; i < Number ; i++)   
+      {   
+       if(Number % i == 0)   
+         Sum = Sum + i ;   
+      }    
+
+     if (Sum == Number)   
+        printf("\n %d is a Perfect Number", Number) ;   
+     else   
+        printf("\n%d is not the Perfect Number", Number) ;  
 
     pthread_mutex_unlock(Para4);
     return 0;
@@ -105,7 +147,21 @@ int PerfectThread4 (void *Para4) {
 
 int PerfectThread5 (void *Para5) {
 
-  /* aqui va el codi del link de la llista del readmi per a trobar els perfect numbers*/
+  int i, Number, Sum = 0 ;   
+
+     printf("\n Please Enter any number \n") ;   
+     scanf("%d", &Number) ;   
+
+     for(i = 1 ; i < Number ; i++)   
+      {   
+       if(Number % i == 0)   
+         Sum = Sum + i ;   
+      }    
+
+     if (Sum == Number)   
+        printf("\n %d is a Perfect Number", Number) ;   
+     else   
+        printf("\n%d is not the Perfect Number", Number) ;  
 
     pthread_mutex_unlock(Para5);
     return 0;
