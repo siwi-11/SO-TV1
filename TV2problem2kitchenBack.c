@@ -5,7 +5,7 @@
 #include <sys/types.h>
 #include <unistd.h>
 #include <stdlib.h>
-
+/*Global structs*/
 struct dato{
   char type[30];
   int time;
@@ -14,11 +14,11 @@ struct dato{
   int priority;
 };
 
-struc list{
+struc list{ //simple linked list
   struct dato datos;
   struct list *sig;
 };
-
+/*Global function declaration*/
 struct list *createnode(void);
 struct list *pop(struct list *l, struct dato *x);
 struct list *orderedInser(struct list *l, struct dato x, int (*f)(struct dato a, struct dato b));
@@ -28,8 +28,10 @@ int comparePrior(struct dato x, struct dato y);
 
 int main(){
   int fd1;
-  
+  //FIFO file path
   char * myfifo = "/tmp/myfifo";
+  //creating the named file(FIFO)
+  //mkfifo(<pathname>, <permission>)
   mkfifo(myfifo, 0666);
   int totalMenus;
   char arr1[150];
@@ -105,57 +107,56 @@ int main(){
   }
   return 0;
 }
-               
+              
 struct list *createnode(void){
   return (struct list *) malloc(sizeof(struct list));
 }
-
+//extract the "dato" from the start of the list 
 struct list *pop(struct list *l, struct dato *x){
-  if (l != NULL){
+  if (l != NULL){ //do nothing if its null
     struct list *p,*q;
     p = l;
-    q = p->sig;
-    *x = p->datos;
-    free(p);
+    q = p->sig; //not loose the link
+    *x = p->datos; //copy the data
+    free(p); //free memory
     l = q;
     return l;
   }
 }
-               
-               
-               
+//Insert new "dato" into the ordered list
+//The new ordered list f is the function to order by          
 struct list *orderedInsert(struct list *l, struct dato x, int (*f)(struct dato a, struct dato b)){
   struct list *p, *q, *ant;
   int ind;
-  q = createnode();
-  q->datos = x;
-  q->sig =NULL;
+  q = createnode(); //create new node
+  q->datos = x; //copy the data
+  q->sig =NULL; //by default can change
   if (l==NULL){
     l = q;
     return l;
   }
-  
+  //list is not null
   ant = NULL;
   p = l;
   ind = 0;
   while (p!=NULL && ind==0){
-    if ((*f)(x,p->datos) < 0)
+    if ((*f)(x,p->datos) < 0) //insert here
       ind = 1;
     else{
       ant = p;
       p = p->sig;
     }
   }
-  if (ant==NULL){
+  if (ant==NULL){ //insert at the begining
     q->sig = l;
     l = q;
-  }else{
+  }else{ //insert in the middle or at the end
     ant->sig = l;
     q->sig = p;
   }
   return l;
 }
-int lengthl(struct list *l){
+int lengthl(struct list *l){ //returns the length of the node
   struct list *p;
   int n;
   n=0;
@@ -167,7 +168,7 @@ int lengthl(struct list *l){
   return n;
 }
                
-struct list *deleteList(struct list *l){
+struct list *deleteList(struct list *l){ //free the list from space
   struc list *p, *q;
   p=l;
   while (p!=NULL){
@@ -178,7 +179,7 @@ struct list *deleteList(struct list *l){
   return NULL;
 }
                
-int comparePrior(struct dato x, struct dato y){
+int comparePrior(struct dato x, struct dato y){ //method of order
   int u,v,w,z;
   u = x.priority;
   v = x.priority;
@@ -192,7 +193,4 @@ int comparePrior(struct dato x, struct dato y){
   if(u==v && w<z)
     return -1;
   return 1;
-}
-               
-               
-        
+}                         
