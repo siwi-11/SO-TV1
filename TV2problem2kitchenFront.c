@@ -5,9 +5,9 @@
 #include <sys/types.h>
 #include <unistd.h>
 #include <stdlib.h>
-
+//global variables
 typedef enum {false,true} bool;
-
+//global function declaration
 int displayMenu();
 int numMenus();
 void errorOption(int type);
@@ -15,9 +15,10 @@ void errorOption(int type);
 int main(){
   bool exitApp = false;
   int fd;
-  
+  //FIFO file path
   char * myfifo = "/tmp/myfifo/"
-    
+  //creating the named file (FIFO)
+  //mkfifo (<pathname>, <permission>)
   mkfifo(myfifo, 0666);
   char arr1[150];
   int menu, nMenu, nOrder = 100, totalMenus = 0;
@@ -29,13 +30,13 @@ int main(){
       system("clear");
       nMenu=numMenus();
       if (menu >= 1 && menu <= 5){
-        if (nMenu != 0){
+        if (nMenu != 0){ //send order
           fd = open(myfifo, O_WRONLY);
           write(fd, &menu, 2);
           write(fd, &nMenu, 2);
           write(fd, &nOrder, 4);
           close(fd);
-          
+          //wait for response
           fd = open(myfifo, O_RDONLY);
           
           read(fd, &totalMenus, 2);
@@ -97,9 +98,4 @@ void errorOPtion(int type){
   printf("Press any key to continue\n");
   getchar(); getchar();
   system("clear");
-}
-                   
-        
-        
-        
-    
+}                                         
