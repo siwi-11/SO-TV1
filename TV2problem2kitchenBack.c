@@ -54,7 +54,7 @@ int main(){
         x.priority = 5;
       break;
       case 2:
-        strcpy(x.type, "Vegetarian Slim Poke Menu);
+        strcpy(x.type, "Vegetarian Slim Poke Menu");
         x.time = 2;
         x.nMenu = nMenu;
         x.nOrder = nOrder;
